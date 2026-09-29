@@ -14,6 +14,8 @@ A conversational avatar you configure in [SpatialReal Studio](https://app.spatia
 | --- | --- | --- | --- |
 | [agent/embed](agent/embed) | Talk to an agent on your own page, with one `<iframe>` | Ready | [Quickstart](https://docs.spatialreal.ai/overview/quickstart) |
 | [agent/web](agent/web) | Your own interface for an agent, with the Web SDK | Coming soon | [Your own app](https://docs.spatialreal.ai/agent/reach/your-own-app) |
+| [agent/ios](agent/ios) | Your own interface for an agent, in an iOS app | Coming soon | [iOS SDK](https://docs.spatialreal.ai/sdk-reference/ios-sdk/api-reference) |
+| [agent/android](agent/android) | Your own interface for an agent, in an Android app | Coming soon | [Android SDK](https://docs.spatialreal.ai/sdk-reference/android-sdk/api-reference) |
 
 ### Avatar Integration
 
