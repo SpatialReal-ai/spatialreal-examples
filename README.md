@@ -30,6 +30,8 @@ An avatar for speech you already produce — your TTS, speech model or voice age
 | [avatar-integration/livekit/web-client](avatar-integration/livekit/web-client) | LiveKit: a web client that joins the room and renders the avatar | Ready | [Web client](https://docs.spatialreal.ai/avatar-integration/livekit/web-client) |
 | [avatar-integration/host-mode/server](avatar-integration/host-mode/server) | Host mode: a server that forwards speech and motion to the app | Ready | [Host mode server](https://docs.spatialreal.ai/avatar-integration/host-mode/server) |
 | [avatar-integration/host-mode/client/web](avatar-integration/host-mode/client/web) | Host mode: a web app that plays what the server forwards | Ready | [Host mode client](https://docs.spatialreal.ai/avatar-integration/host-mode/client) |
+| [avatar-integration/host-mode/client/ios](avatar-integration/host-mode/client/ios) | Host mode: the same, in an iOS app | Ready | [Host mode client](https://docs.spatialreal.ai/avatar-integration/host-mode/client) |
+| [avatar-integration/host-mode/client/android](avatar-integration/host-mode/client/android) | Host mode: the same, in an Android app | Ready | [Host mode client](https://docs.spatialreal.ai/avatar-integration/host-mode/client) |
 
 Not sure which one you need? [How it works](https://docs.spatialreal.ai/overview/how-it-works) explains the two products, and [Avatar Integration](https://docs.spatialreal.ai/avatar-integration/introduction) helps you choose a mode.
 

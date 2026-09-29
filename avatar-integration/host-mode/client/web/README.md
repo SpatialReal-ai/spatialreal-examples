@@ -4,7 +4,7 @@ A web page that connects to your Host mode server and plays the audio and motion
 
 Docs: [Host mode client](https://docs.spatialreal.ai/avatar-integration/host-mode/client)
 
-This is the app side of the Host mode example. Start the server in [`../../server`](../../server) first.
+This is an app side of the Host mode example; the same app is in [`../ios`](../ios) and [`../android`](../android). Start the server in [`../../server`](../../server) first.
 
 ## Before you start
 
