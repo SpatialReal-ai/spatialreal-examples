@@ -1,0 +1,50 @@
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: #f6f6f7;
+  color: #1c1c1e;
+}
+
+main {
+  max-width: 480px;
+  margin: 32px auto;
+  padding: 0 16px;
+}
+
+/* The SDK draws into this element, so it needs a size of its own */
+.avatar {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  background: #e4e4e7;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+button {
+  padding: 8px 14px;
+  border: 1px solid #d4d4d8;
+  border-radius: 8px;
+  background: #fff;
+  font: inherit;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.status {
+  color: #52525b;
+}
+
+.error {
+  color: #b91c1c;
+}
