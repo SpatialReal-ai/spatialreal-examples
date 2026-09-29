@@ -4,7 +4,7 @@ A Python server that, when the app asks, sends an audio clip to SpatialReal and 
 
 Docs: [Host mode server](https://docs.spatialreal.ai/avatar-integration/host-mode/server)
 
-This is the server side of the Host mode example. The app side is in [`../client/web`](../client/web).
+This is the server side of the Host mode example. The app side is in [`../client`](../client): Web, iOS or Android.
 
 ## Before you start
 
@@ -25,7 +25,9 @@ Fill in `SPATIALREAL_API_KEY`, `SPATIALREAL_APP_ID` and `SPATIALREAL_AVATAR_ID`.
 uv run server.py
 ```
 
-The server listens on `ws://localhost:8765`. Leave it running, and start the [web client](../client/web) with the same avatar ID.
+The server listens on `ws://localhost:8765`. Leave it running, and start a client with the same avatar ID: [Web](../client/web), [iOS](../client/ios) or [Android](../client/android).
+
+To reach it from a phone, start it with `HOST=0.0.0.0` in `.env`, and point the app at your computer's address on the network, for example `ws://192.168.1.20:8765`.
 
 ## What you should see
 

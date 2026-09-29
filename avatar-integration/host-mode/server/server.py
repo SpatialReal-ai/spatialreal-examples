@@ -19,6 +19,9 @@ from spatialreal import new_avatar_session
 load_dotenv()
 
 SAMPLE_RATE = 16000
+# localhost by default; set HOST=0.0.0.0 so a phone on your network can connect
+HOST = os.getenv("HOST") or "localhost"
+PORT = 8765
 CLIPS = {voice: Path(__file__).parent / "clips" / f"{voice}.wav" for voice in ("female", "male")}
 
 
@@ -97,8 +100,8 @@ async def handle(ws):
 
 
 async def main():
-    async with websockets.serve(handle, "localhost", 8765):
-        print("Host mode server on ws://localhost:8765")
+    async with websockets.serve(handle, HOST, PORT):
+        print(f"Host mode server on ws://{HOST}:{PORT}")
         await asyncio.Future()  # run until stopped
 
 
