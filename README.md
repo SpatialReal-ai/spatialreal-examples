@@ -14,7 +14,7 @@ A conversational avatar you configure in [SpatialReal Studio](https://app.spatia
 | --- | --- | --- | --- |
 | [agent/embed](agent/embed) | Talk to an agent on your own page, with one `<iframe>` | Ready | [Quickstart](https://docs.spatialreal.ai/overview/quickstart) |
 | [agent/web](agent/web) | Your own interface for an agent, with the Web SDK | Ready | [Your own app](https://docs.spatialreal.ai/agent/reach/your-own-app) |
-| [agent/ios](agent/ios) | Your own interface for an agent, in an iOS app | Coming soon | [Your own app](https://docs.spatialreal.ai/agent/reach/your-own-app) |
+| [agent/ios](agent/ios) | Your own interface for an agent, in an iOS app | Ready | [Your own app](https://docs.spatialreal.ai/agent/reach/your-own-app) |
 | [agent/android](agent/android) | Your own interface for an agent, in an Android app | Coming soon | [Your own app](https://docs.spatialreal.ai/agent/reach/your-own-app) |
 
 ### Avatar Integration
@@ -24,7 +24,7 @@ An avatar for speech you already produce — your TTS, speech model or voice age
 | Example | What it shows | Status | Docs |
 | --- | --- | --- | --- |
 | [avatar-integration/sdk-mode/web](avatar-integration/sdk-mode/web) | SDK mode: a web page sends speech and the avatar speaks it | Ready | [SDK mode on the Web](https://docs.spatialreal.ai/avatar-integration/sdk-mode/web) |
-| [avatar-integration/sdk-mode/ios](avatar-integration/sdk-mode/ios) | SDK mode in an iOS app | Coming soon | [SDK mode on iOS](https://docs.spatialreal.ai/avatar-integration/sdk-mode/ios) |
+| [avatar-integration/sdk-mode/ios](avatar-integration/sdk-mode/ios) | SDK mode in an iOS app | Ready | [SDK mode on iOS](https://docs.spatialreal.ai/avatar-integration/sdk-mode/ios) |
 | [avatar-integration/sdk-mode/android](avatar-integration/sdk-mode/android) | SDK mode in an Android app | Coming soon | [SDK mode on Android](https://docs.spatialreal.ai/avatar-integration/sdk-mode/android) |
 | [avatar-integration/livekit/agent](avatar-integration/livekit/agent) | LiveKit: a LiveKit Agents voice agent with the SpatialReal plugin | Ready | [LiveKit Agent](https://docs.spatialreal.ai/avatar-integration/livekit/agent) |
 | [avatar-integration/livekit/web-client](avatar-integration/livekit/web-client) | LiveKit: a web client that joins the room and renders the avatar | Ready | [Web client](https://docs.spatialreal.ai/avatar-integration/livekit/web-client) |
