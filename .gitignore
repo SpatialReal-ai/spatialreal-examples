@@ -1,0 +1,21 @@
+# Your values
+.env
+.env.local
+
+# Node
+node_modules/
+dist/
+.next/
+
+# Python
+__pycache__/
+.venv/
+*.pyc
+
+# Audio converted for the examples
+*.pcm
+
+# OS / editors
+.DS_Store
+.idea/
+.vscode/
