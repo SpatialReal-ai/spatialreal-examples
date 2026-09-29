@@ -1,0 +1,10 @@
+[project]
+name = "spatialreal-host-mode-server"
+version = "0.1.0"
+description = "SpatialReal Host mode: a server that forwards speech and the avatar's motion to the app"
+requires-python = ">=3.10"
+dependencies = [
+    "python-dotenv>=1.2.3",
+    "spatialreal>=0.1.0",
+    "websockets>=17.1",
+]
