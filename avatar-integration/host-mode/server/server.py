@@ -42,10 +42,14 @@ async def handle(ws):
     live = False                # False after an interrupt, until the next utterance
     speaking = None
 
-    # Called with every motion message SpatialReal returns: forward it unchanged
+    # Called with every motion message SpatialReal returns: forward it unchanged.
+    # After the utterance's last one, tell the app the utterance is over; motion that
+    # reaches the app after the end of an utterance is dropped.
     def on_motion(frame: bytes, is_last: bool):
         if live:
             outbox.put_nowait({"type": "motion", "data": [b64(frame)]})
+            if is_last:
+                outbox.put_nowait({"type": "audio", "data": "", "end": True})
 
     session = new_avatar_session(
         api_key=os.environ["SPATIALREAL_API_KEY"],
@@ -62,13 +66,14 @@ async def handle(ws):
     await session.start()   # connects to SpatialReal
     print("App connected; SpatialReal session started")
 
-    # Queue the audio for the app first, then send it to SpatialReal,
-    # so the app has the utterance open before its motion arrives
+    # Queue the audio for the app first, then send it to SpatialReal, so the app has the
+    # utterance open before its motion arrives. The audio to the app carries no end:
+    # the end follows the last motion.
     async def speak(clip: Path):
         nonlocal live
         live = True
         pcm = read_pcm16(clip)
-        outbox.put_nowait({"type": "audio", "data": b64(pcm), "end": True})
+        outbox.put_nowait({"type": "audio", "data": b64(pcm), "end": False})
         await session.send_audio(pcm, end=True)
 
     async def pump():           # server -> app

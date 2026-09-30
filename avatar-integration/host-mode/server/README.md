@@ -41,7 +41,8 @@ JSON over the WebSocket, with binary data in base64:
 
 | Message | Direction | Example |
 | --- | --- | --- |
-| Audio | server → app | `{"type": "audio", "data": "<base64>", "end": true}` |
+| Audio | server → app | `{"type": "audio", "data": "<base64>", "end": false}` |
+| End of utterance | server → app | `{"type": "audio", "data": "", "end": true}`, after the utterance's last motion |
 | Motion | server → app | `{"type": "motion", "data": ["<base64>"]}` |
 | Speak | app → server | `{"type": "speak", "voice": "female"}`, or `"male"` |
 | Interrupt | app → server | `{"type": "interrupt"}` |

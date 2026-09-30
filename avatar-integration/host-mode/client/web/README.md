@@ -52,6 +52,7 @@ The page and the server exchange JSON over the WebSocket:
 | page → server | `{"type": "speak", "voice": "female"}` or `"male"`, and `{"type": "interrupt"}` |
 | server → page | `{"type": "audio", "data": "<base64 PCM16>", "end": false}` |
 | server → page | `{"type": "motion", "data": ["<base64>", ...]}` |
+| server → page | `{"type": "audio", "data": "", "end": true}`: the end of the utterance, after its last motion |
 
 ## How it maps to the docs
 
