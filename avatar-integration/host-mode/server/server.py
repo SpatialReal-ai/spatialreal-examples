@@ -62,9 +62,6 @@ async def handle(ws):
         transport_frames=on_motion,
         on_error=lambda err: print("SpatialReal error:", err),
     )
-    await session.init()    # exchanges the API key for a session token
-    await session.start()   # connects to SpatialReal
-    print("App connected; SpatialReal session started")
 
     # Queue the audio for the app first, then send it to SpatialReal, so the app has the
     # utterance open before its motion arrives. The audio to the app carries no end:
@@ -77,8 +74,11 @@ async def handle(ws):
         await session.send_audio(pcm, end=True)
 
     async def pump():           # server -> app
-        while True:
-            await ws.send(json.dumps(await outbox.get()))
+        try:
+            while True:
+                await ws.send(json.dumps(await outbox.get()))
+        except websockets.ConnectionClosed:
+            pass                # the app is gone; listen() returns too
 
     async def listen():         # app -> server
         nonlocal live, speaking
@@ -97,9 +97,18 @@ async def handle(ws):
                 while not outbox.empty():
                     outbox.get_nowait()
 
+    # When the app disconnects, listen() returns: stop everything for this app and close
+    # its SpatialReal session, even if it failed to start.
+    pumping = asyncio.create_task(pump())
     try:
-        await asyncio.gather(pump(), listen())
+        await session.init()    # exchanges the API key for a session token
+        await session.start()   # connects to SpatialReal
+        print("App connected; SpatialReal session started")
+        await listen()
     finally:
+        pumping.cancel()
+        if speaking:
+            speaking.cancel()
         await session.close()
         print("App disconnected; SpatialReal session closed")
 

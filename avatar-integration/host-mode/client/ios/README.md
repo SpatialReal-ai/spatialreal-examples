@@ -9,7 +9,7 @@ This is an app side of the Host mode example. Start the server in [`../../server
 ## Before you start
 
 - Xcode 16 or later
-- An iPhone or iPad on iOS 16 or later (A11 chip or newer), or the simulator
+- An iPhone or iPad on iOS 16 or later (A11 chip or newer), or the simulator on a Mac with Apple silicon
 - The Host mode server from [`../../server`](../../server), running
 - From [SpatialReal Studio](https://app.spatialreal.ai): your **App ID** ([Apps & API keys](https://docs.spatialreal.ai/studio/api-keys)), the same **avatar ID** the server uses, and a **temporary session token** ([Session tokens](https://docs.spatialreal.ai/overview/session-tokens#temporary-tokens-for-testing))
 

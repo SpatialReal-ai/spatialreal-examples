@@ -7,7 +7,7 @@ Docs: [SDK mode on iOS](https://docs.spatialreal.ai/avatar-integration/sdk-mode/
 ## Before you start
 
 - Xcode 16 or later
-- An iPhone or iPad on iOS 16 or later (A11 chip or newer), or the simulator
+- An iPhone or iPad on iOS 16 or later (A11 chip or newer), or the simulator on a Mac with Apple silicon
 - From [SpatialReal Studio](https://app.spatialreal.ai): your **App ID** ([Apps & API keys](https://docs.spatialreal.ai/studio/api-keys)), an **avatar ID** ([Avatar library](https://docs.spatialreal.ai/studio/public-avatar)) and a **temporary session token** ([Session tokens](https://docs.spatialreal.ai/overview/session-tokens#temporary-tokens-for-testing))
 
 ## Configure

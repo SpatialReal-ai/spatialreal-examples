@@ -7,7 +7,7 @@ Docs: [Your own app](https://docs.spatialreal.ai/agent/reach/your-own-app) (iOS 
 ## Before you start
 
 - Xcode 16 or later
-- An iPhone or iPad on iOS 16 or later (A11 chip or newer). The simulator works too, with your Mac's microphone
+- An iPhone or iPad on iOS 16 or later (A11 chip or newer). The simulator works too on a Mac with Apple silicon, but without the microphone: to talk to the agent, use a device
 - An agent created in [SpatialReal Studio](https://app.spatialreal.ai), and its **Agent ID**
 - The **App ID** of the app the agent runs under ([Apps & API keys](https://docs.spatialreal.ai/studio/api-keys)), and a **temporary session token** ([Session tokens](https://docs.spatialreal.ai/overview/session-tokens#temporary-tokens-for-testing))
 

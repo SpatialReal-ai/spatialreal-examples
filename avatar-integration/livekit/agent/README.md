@@ -8,7 +8,7 @@ This is one half of the LiveKit example. The other half, the page users talk fro
 
 ## Before you start
 
-- Python 3.10 or later, and [uv](https://docs.astral.sh/uv/)
+- Python 3.11 or later, and [uv](https://docs.astral.sh/uv/)
 - A [LiveKit](https://livekit.io) project: its URL, API key and API secret
 - From [SpatialReal Studio](https://app.spatialreal.ai): your **App ID** and **API key** ([Apps & API keys](https://docs.spatialreal.ai/studio/api-keys)), and an **avatar ID** ([Avatar library](https://docs.spatialreal.ai/studio/public-avatar))
 - API keys for the voice pipeline: [Deepgram](https://deepgram.com) (speech to text), [OpenAI](https://platform.openai.com) (the replies) and [Cartesia](https://cartesia.ai) (text to speech)
