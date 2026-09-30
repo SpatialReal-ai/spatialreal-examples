@@ -101,7 +101,7 @@
 			mainGroup = A6E270000000000000000005;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				A6E270000000000000000012 /* XCRemoteSwiftPackageReference "ios-sdk" */,
+				A6E270000000000000000012 /* XCRemoteSwiftPackageReference "ios-sdk-release" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = A6E270000000000000000006 /* Products */;
@@ -247,9 +247,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		A6E270000000000000000012 /* XCRemoteSwiftPackageReference "ios-sdk" */ = {
+		A6E270000000000000000012 /* XCRemoteSwiftPackageReference "ios-sdk-release" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SpatialReal-ai/ios-sdk.git";
+			repositoryURL = "https://github.com/SpatialReal-ai/ios-sdk-release.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = "1.0.0-beta.1";
@@ -260,7 +260,7 @@
 /* Begin XCSwiftPackageProductDependency section */
 		A6E270000000000000000011 /* SpatialRealSDK */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A6E270000000000000000012 /* XCRemoteSwiftPackageReference "ios-sdk" */;
+			package = A6E270000000000000000012 /* XCRemoteSwiftPackageReference "ios-sdk-release" */;
 			productName = SpatialRealSDK;
 		};
 /* End XCSwiftPackageProductDependency section */
