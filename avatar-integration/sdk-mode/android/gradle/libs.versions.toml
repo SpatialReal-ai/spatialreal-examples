@@ -1,7 +1,7 @@
 [versions]
 agp = "8.13.1"
 kotlin = "2.2.21"
-spatialreal = "1.0.0-beta1"
+spatialreal = "1.0.0-beta2"
 coreKtx = "1.17.0"
 lifecycle = "2.10.0"
 activityCompose = "1.12.1"

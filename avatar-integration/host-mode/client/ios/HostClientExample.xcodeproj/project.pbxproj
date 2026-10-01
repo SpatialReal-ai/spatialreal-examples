@@ -254,7 +254,7 @@
 			repositoryURL = "https://github.com/SpatialReal-ai/ios-sdk-release.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = "1.0.0-beta.1";
+				minimumVersion = "1.0.0-beta.2";
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
