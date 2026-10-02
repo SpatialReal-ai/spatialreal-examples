@@ -15,6 +15,22 @@ __pycache__/
 # Audio converted for the examples
 *.pcm
 
+# Xcode
+xcuserdata/
+*.xcuserstate
+DerivedData/
+.build/
+.swiftpm/
+
+# Android / Gradle
+.gradle/
+build/
+local.properties
+.cxx/
+.kotlin/
+*.iml
+captures/
+
 # OS / editors
 .DS_Store
 .idea/
