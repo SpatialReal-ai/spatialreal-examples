@@ -5,6 +5,6 @@ description = "A LiveKit Agents voice agent with a SpatialReal avatar"
 requires-python = ">=3.11"
 dependencies = [
     "livekit-agents[cartesia,deepgram,openai,silero]~=1.8",
-    "livekit-plugins-spatialreal",
+    "livekit-plugins-spatialreal>=1.8.4",
     "python-dotenv>=1.2.3",
 ]
