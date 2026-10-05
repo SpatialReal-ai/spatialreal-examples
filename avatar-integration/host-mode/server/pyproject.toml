@@ -5,6 +5,6 @@ description = "SpatialReal Host mode: a server that forwards speech and the avat
 requires-python = ">=3.10"
 dependencies = [
     "python-dotenv>=1.2.3",
-    "spatialreal>=0.1.0",
+    "spatialreal>=0.2.0",
     "websockets>=16.0",
 ]

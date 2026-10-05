@@ -55,8 +55,8 @@ async def handle(ws):
         api_key=os.environ["SPATIALREAL_API_KEY"],
         app_id=os.environ["SPATIALREAL_APP_ID"],
         avatar_id=os.environ["SPATIALREAL_AVATAR_ID"],
-        console_endpoint_url="https://api.spatialreal.com",
-        ingress_endpoint_url="wss://driven.us-west.spatialreal.cloud/v2/driveningress",
+        environment="us-west",   # endpoints come from here; the two *_endpoint_url
+                                 # arguments override them for a private deployment
         expire_at=datetime.now(timezone.utc) + timedelta(hours=1),
         sample_rate=SAMPLE_RATE,
         transport_frames=on_motion,
