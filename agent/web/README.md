@@ -43,6 +43,40 @@ Open http://localhost:5173.
 
 If the agent, a time limit or your credits end the conversation, the page says so and why. It doesn't reconnect on its own.
 
+## How it works
+
+```mermaid
+sequenceDiagram
+    participant Page as Your page<br/>(src/App.vue)
+    participant Server as Your server<br/>(server.js)
+    participant SR as SpatialReal
+
+    Note over Page,SR: The page loads
+    Page->>Server: POST /api/session-token
+    Server->>SR: Request a session token, with the API key
+    SR-->>Server: Session token
+    Server-->>Page: Session token
+    Page->>SR: createSession(), with the App ID, the agent ID and the session token
+    SR-->>Page: The agent's avatar
+    Note over Page: The avatar stands still. Nothing is billed.
+
+    Note over Page,SR: Click Start
+    Page->>SR: start(): connect, and open the microphone
+    Note over Page: Live. Billing starts.
+
+    loop Every turn
+        Page->>SR: Your voice
+        SR-->>Page: The agent's reply, in its voice, with motion
+        SR-->>Page: Captions for both sides
+    end
+
+    Note over Page,SR: Click End
+    Page->>SR: end()
+    Note over Page: Start opens a new conversation
+```
+
+SpatialReal runs the whole conversation: it hears you, writes the reply and speaks it as the agent. The page sends your voice and plays what comes back. The API key stays in `server.js`.
+
 ## How it maps to the docs
 
 | Docs section | Where it is |

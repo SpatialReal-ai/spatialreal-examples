@@ -39,6 +39,38 @@ Open http://localhost:5173.
 3. Click **Speak (female voice)** or **Speak (male voice)**, whichever suits your avatar. The avatar speaks the clip, lips in sync, and returns to idle when it ends.
 4. Click **Stop** while it speaks: it stops at once.
 
+## How it works
+
+```mermaid
+sequenceDiagram
+    participant Page as Your page<br/>(src/App.vue)
+    participant Server as Your server<br/>(server.js)
+    participant SR as SpatialReal
+
+    Note over Page,SR: The page loads
+    Page->>Server: POST /api/session-token
+    Server->>SR: Request a session token, with the API key
+    SR-->>Server: Session token
+    Server-->>Page: Session token
+    Page->>SR: createSession(), with the App ID and the session token
+    SR-->>Page: The avatar
+    Note over Page: The avatar stands still. Nothing is billed.
+
+    Note over Page,SR: Click Start
+    Page->>SR: start()
+    Note over Page: Live. Billing starts.
+
+    Note over Page,SR: Click Speak
+    Page->>SR: send(clip, true)
+    SR-->>Page: Motion
+    Note over Page: The avatar speaks the clip, lips in sync
+
+    Note over Page,SR: Click Stop
+    Note over Page: interrupt(): the avatar stops at once
+```
+
+The API key stays in `server.js`. The page only ever holds the session token.
+
 ## How it maps to the docs
 
 | Docs step | Where it is |

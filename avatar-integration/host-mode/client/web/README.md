@@ -43,16 +43,54 @@ Open http://localhost:5173.
 3. Click **Speak (female voice)** or **Speak (male voice)**, whichever suits your avatar. The server sends the clip to SpatialReal and forwards the audio and motion; the avatar speaks it, lips in sync.
 4. Click **Stop** while it speaks: it stops at once, and the server stops forwarding.
 
+## How it works
+
+```mermaid
+sequenceDiagram
+    participant App as Your app<br/>(this page)
+    participant Server as Your server<br/>(server.py)
+    participant SR as SpatialReal
+
+    Note over App,SR: The app opens
+    App->>SR: createSession() in Host mode, with the App ID and a session token
+    SR-->>App: The avatar
+    App->>Server: Connect to the WebSocket, port 8765
+    Server->>SR: init() and start(): a SpatialReal session for this app
+    Note over App: Server: connected
+
+    Note over App,SR: Click Start
+    Note over App: start(): playback is ready
+
+    Note over App,SR: Click Speak
+    App->>Server: speak
+    Server->>App: The clip's audio, with end false
+    Server->>SR: send_audio(clip, end=True)
+    loop Every motion message
+        SR-->>Server: Motion
+        Server->>App: The same motion, unchanged
+    end
+    Server->>App: End of utterance, after the last motion
+    Note over App: The avatar speaks the clip, lips in sync
+
+    Note over App,SR: Click Stop
+    Note over App: interrupt(): playback stops at once
+    App->>Server: interrupt
+    Server->>SR: interrupt()
+    Note over Server: Stops forwarding the old utterance
+```
+
+The app downloads the avatar from SpatialReal and opens no other connection to it. Everything else (the audio, the motion and the end of each utterance) reaches the app through your server, in order.
+
 ## Messages
 
 The page and the server exchange JSON over the WebSocket:
 
-| Direction | Message |
+| From → to | Message |
 | --- | --- |
-| page → server | `{"type": "speak", "voice": "female"}` or `"male"`, and `{"type": "interrupt"}` |
-| server → page | `{"type": "audio", "data": "<base64 PCM16>", "end": false}` |
-| server → page | `{"type": "motion", "data": ["<base64>", ...]}` |
-| server → page | `{"type": "audio", "data": "", "end": true}`: the end of the utterance, after its last motion |
+| This page → the Host mode server | `{"type": "speak", "voice": "female"}` or `"male"`, and `{"type": "interrupt"}` |
+| The Host mode server → this page | `{"type": "audio", "data": "<base64 PCM16>", "end": false}` |
+| The Host mode server → this page | `{"type": "motion", "data": ["<base64>", ...]}` |
+| The Host mode server → this page | `{"type": "audio", "data": "", "end": true}`: the end of the utterance, after its last motion |
 
 ## How it maps to the docs
 

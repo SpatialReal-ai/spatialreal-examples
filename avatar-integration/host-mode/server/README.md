@@ -35,17 +35,55 @@ To reach it from a phone, start it with `HOST=0.0.0.0` in `.env`, and point the 
 - When the app asks for speech, audio and motion messages flow to it, and the avatar speaks the clip, lips in sync.
 - When the app interrupts, the server stops forwarding the old utterance at once.
 
+## How it works
+
+```mermaid
+sequenceDiagram
+    participant App as Your app<br/>(../client: Web, iOS or Android)
+    participant Server as Your server<br/>(server.py)
+    participant SR as SpatialReal
+
+    Note over App,SR: The app opens
+    App->>SR: createSession() in Host mode, with the App ID and a session token
+    SR-->>App: The avatar
+    App->>Server: Connect to the WebSocket, port 8765
+    Server->>SR: init() and start(): a SpatialReal session for this app
+    Note over App: Server: connected
+
+    Note over App,SR: Tap or click Start
+    Note over App: start(): playback is ready
+
+    Note over App,SR: Tap or click Speak
+    App->>Server: speak
+    Server->>App: The clip's audio, with end false
+    Server->>SR: send_audio(clip, end=True)
+    loop Every motion message
+        SR-->>Server: Motion
+        Server->>App: The same motion, unchanged
+    end
+    Server->>App: End of utterance, after the last motion
+    Note over App: The avatar speaks the clip, lips in sync
+
+    Note over App,SR: Tap or click Stop
+    Note over App: interrupt(): playback stops at once
+    App->>Server: interrupt
+    Server->>SR: interrupt()
+    Note over Server: Stops forwarding the old utterance
+```
+
+The app downloads the avatar from SpatialReal and opens no other connection to it. Everything else (the audio, the motion and the end of each utterance) reaches the app through your server, in order.
+
 ## Messages
 
 JSON over the WebSocket, with binary data in base64:
 
-| Message | Direction | Example |
+| Message | From → to | Example |
 | --- | --- | --- |
-| Audio | server → app | `{"type": "audio", "data": "<base64>", "end": false}` |
-| End of utterance | server → app | `{"type": "audio", "data": "", "end": true}`, after the utterance's last motion |
-| Motion | server → app | `{"type": "motion", "data": ["<base64>"]}` |
-| Speak | app → server | `{"type": "speak", "voice": "female"}`, or `"male"` |
-| Interrupt | app → server | `{"type": "interrupt"}` |
+| Audio | This server → the app | `{"type": "audio", "data": "<base64>", "end": false}` |
+| End of utterance | This server → the app | `{"type": "audio", "data": "", "end": true}`, after the utterance's last motion |
+| Motion | This server → the app | `{"type": "motion", "data": ["<base64>"]}` |
+| Speak | The app → this server | `{"type": "speak", "voice": "female"}`, or `"male"` |
+| Interrupt | The app → this server | `{"type": "interrupt"}` |
 
 The clips in `clips/` are 16 kHz mono speech: one female voice, one male voice. Pick the one that suits your avatar.
 

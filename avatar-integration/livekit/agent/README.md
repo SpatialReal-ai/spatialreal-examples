@@ -41,6 +41,44 @@ The agent registers with your LiveKit project and joins every new room. Now star
 - When a user joins a room, the agent joins too, and so does the avatar, as a participant publishing the avatar's audio and motion.
 - The agent greets the user. Then, whatever it says, the avatar speaks, lips in sync.
 
+## How it works
+
+```mermaid
+sequenceDiagram
+    participant Page as Your page<br/>(web-client)
+    participant Server as Token server<br/>(web-client/server.js)
+    participant Room as LiveKit room
+    participant Agent as Your agent<br/>(agent.py, this folder)
+    participant SR as SpatialReal
+
+    Note over Agent: uv run agent.py dev: the agent waits for new rooms
+
+    Note over Page,SR: The page loads
+    Page->>Server: POST /api/tokens
+    Server->>SR: Request a session token, with the API key
+    SR-->>Server: Session token
+    Server-->>Page: LiveKit URL, room token and session token
+    Page->>SR: createSession(), with the App ID and the session token
+    SR-->>Page: The avatar
+    Note over Page: The avatar stands still
+
+    Note over Page,SR: Click Start
+    Page->>Room: start(): join a new room, microphone on
+    Room-->>Agent: A new room: the agent joins
+    Agent->>SR: avatar.start()
+    SR->>Room: The avatar joins, as a participant
+
+    loop Every reply, starting with a greeting
+        Page->>Room: Your voice
+        Room->>Agent: Your voice
+        Agent->>SR: The reply's speech
+        SR->>Room: The avatar's audio and motion
+        Room->>Page: The avatar speaks the reply, lips in sync
+    end
+```
+
+Your agent never talks to the page directly: everything goes through the LiveKit room. The SpatialReal plugin turns the agent's speech into the avatar, and the avatar joins the room like any other participant.
+
 ## How it maps to the docs
 
 | Docs step | Where it is in `agent.py` |

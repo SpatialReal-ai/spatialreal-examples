@@ -38,6 +38,36 @@ Choose a simulator or your device, and press **Run** (⌘R).
 
 If the agent, a time limit or your credits end the conversation, the app says so and why. It doesn't reconnect on its own.
 
+## How it works
+
+```mermaid
+sequenceDiagram
+    participant App as Your app<br/>(ChatModel.swift)
+    participant SR as SpatialReal
+
+    Note over App,SR: The app opens
+    App->>SR: createSession(), with the App ID, the agent ID and the session token from Config
+    SR-->>App: The agent's avatar
+    Note over App: The avatar stands still. Nothing is billed.
+
+    Note over App,SR: Tap Start
+    Note over App: The first time, iOS asks for the microphone
+    App->>SR: start(): connect, and open the microphone
+    Note over App: Live. Billing starts.
+
+    loop Every turn
+        App->>SR: Your voice
+        SR-->>App: The agent's reply, in its voice, with motion
+        SR-->>App: Captions for both sides
+    end
+
+    Note over App,SR: Tap End
+    App->>SR: end()
+    Note over App: Start opens a new conversation
+```
+
+SpatialReal runs the whole conversation: it hears you, writes the reply and speaks it as the agent. The app sends your voice and plays what comes back. A real app fetches the session token from its own server instead of `Config.swift`.
+
 ## How it maps to the docs
 
 | Docs step (iOS tab) | Where it is |

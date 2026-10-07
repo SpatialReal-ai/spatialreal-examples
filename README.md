@@ -1,6 +1,26 @@
-# SpatialReal examples
+<div align="center">
+
+<img src=".github/banner.png" alt="SpatialReal Examples" width="100%">
 
 Runnable examples for [SpatialReal](https://www.spatialreal.ai): photorealistic avatars that speak in real time, rendered on the viewer's device.
+
+[![Docs](https://img.shields.io/badge/docs-docs.spatialreal.ai-df69b6)](https://docs.spatialreal.ai)
+[![Studio](https://img.shields.io/badge/Studio-app.spatialreal.ai-df69b6)](https://app.spatialreal.ai)
+[![Discord](https://img.shields.io/badge/Discord-join%20us-5865F2?logo=discord&logoColor=white)](https://discord.gg/TfKman55T2)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-follow-0A66C2)](https://www.linkedin.com/company/spatialreal)
+
+[![Web SDK on npm](https://img.shields.io/badge/Web%20SDK-npm-CB3837?logo=npm&logoColor=white)](https://www.npmjs.com/package/@spatialreal/web-sdk)
+[![iOS SDK, Swift Package Manager](https://img.shields.io/badge/iOS%20SDK-Swift%20Package-F05138?logo=swift&logoColor=white)](https://github.com/SpatialReal-ai/ios-sdk-release)
+[![Android SDK on Maven Central](https://img.shields.io/badge/Android%20SDK-Maven%20Central-3DDC84?logo=android&logoColor=white)](https://central.sonatype.com/artifact/ai.spatialreal/android)
+[![Python SDK on PyPI](https://img.shields.io/badge/Python%20SDK-PyPI-3775A9?logo=pypi&logoColor=white)](https://pypi.org/project/spatialreal/)
+[![LiveKit plugin on PyPI](https://img.shields.io/badge/LiveKit%20plugin-PyPI-3775A9?logo=pypi&logoColor=white)](https://pypi.org/project/livekit-plugins-spatialreal/)
+
+</div>
+
+## Start here
+
+- **See an avatar talk, with no code:** [`agent/embed`](agent/embed). Create an agent in Studio, paste its link into one `<iframe>`, open the page and speak.
+- **Make an avatar speak your own audio:** [`avatar-integration/sdk-mode/web`](avatar-integration/sdk-mode/web). A web page sends an audio clip, and the avatar speaks it with lip-sync and expressions.
 
 Every folder is a standalone project. Pick one, follow its README, and it runs on its own.
 
@@ -8,30 +28,24 @@ Every folder is a standalone project. Pick one, follow its README, and it runs o
 
 ### SpatialReal Agent
 
-A conversational avatar you configure in [SpatialReal Studio](https://app.spatialreal.ai), with no code of its own.
+A conversational avatar you configure in [SpatialReal Studio](https://app.spatialreal.ai). SpatialReal runs the whole conversation.
 
-| Example | What it shows | Status | Docs |
+| | Web | iOS | Android |
 | --- | --- | --- | --- |
-| [agent/embed](agent/embed) | Talk to an agent on your own page, with one `<iframe>` | Ready | [Quickstart](https://docs.spatialreal.ai/overview/quickstart) |
-| [agent/web](agent/web) | Your own interface for an agent, with the Web SDK | Ready | [Your own app](https://docs.spatialreal.ai/agent/reach/your-own-app) |
-| [agent/ios](agent/ios) | Your own interface for an agent, in an iOS app | Ready | [Your own app](https://docs.spatialreal.ai/agent/reach/your-own-app) |
-| [agent/android](agent/android) | Your own interface for an agent, in an Android app | Ready | [Your own app](https://docs.spatialreal.ai/agent/reach/your-own-app) |
+| **[On a page](https://docs.spatialreal.ai/agent/reach/page-and-embed)**<br>One `<iframe>`, no code | [embed](agent/embed) | — | — |
+| **[In your own app](https://docs.spatialreal.ai/agent/reach/your-own-app)**<br>Your interface; the SDK runs the conversation | [web](agent/web) | [ios](agent/ios) | [android](agent/android) |
 
 ### Avatar Integration
 
-An avatar for speech you already produce — your TTS, speech model or voice agent.
+An avatar for speech you already produce: your TTS, speech model or voice agent.
 
-| Example | What it shows | Status | Docs |
-| --- | --- | --- | --- |
-| [avatar-integration/sdk-mode/web](avatar-integration/sdk-mode/web) | SDK mode: a web page sends speech and the avatar speaks it | Ready | [SDK mode on the Web](https://docs.spatialreal.ai/avatar-integration/sdk-mode/web) |
-| [avatar-integration/sdk-mode/ios](avatar-integration/sdk-mode/ios) | SDK mode in an iOS app | Ready | [SDK mode on iOS](https://docs.spatialreal.ai/avatar-integration/sdk-mode/ios) |
-| [avatar-integration/sdk-mode/android](avatar-integration/sdk-mode/android) | SDK mode in an Android app | Ready | [SDK mode on Android](https://docs.spatialreal.ai/avatar-integration/sdk-mode/android) |
-| [avatar-integration/livekit/agent](avatar-integration/livekit/agent) | LiveKit: a LiveKit Agents voice agent with the SpatialReal plugin | Ready | [LiveKit Agent](https://docs.spatialreal.ai/avatar-integration/livekit/agent) |
-| [avatar-integration/livekit/web-client](avatar-integration/livekit/web-client) | LiveKit: a web client that joins the room and renders the avatar | Ready | [Web client](https://docs.spatialreal.ai/avatar-integration/livekit/web-client) |
-| [avatar-integration/host-mode/server](avatar-integration/host-mode/server) | Host mode: a server that forwards speech and motion to the app | Ready | [Host mode server](https://docs.spatialreal.ai/avatar-integration/host-mode/server) |
-| [avatar-integration/host-mode/client/web](avatar-integration/host-mode/client/web) | Host mode: a web app that plays what the server forwards | Ready | [Host mode client](https://docs.spatialreal.ai/avatar-integration/host-mode/client) |
-| [avatar-integration/host-mode/client/ios](avatar-integration/host-mode/client/ios) | Host mode: the same, in an iOS app | Ready | [Host mode client](https://docs.spatialreal.ai/avatar-integration/host-mode/client) |
-| [avatar-integration/host-mode/client/android](avatar-integration/host-mode/client/android) | Host mode: the same, in an Android app | Ready | [Host mode client](https://docs.spatialreal.ai/avatar-integration/host-mode/client) |
+| | Web | iOS | Android | Server |
+| --- | --- | --- | --- | --- |
+| **[SDK mode](https://docs.spatialreal.ai/avatar-integration/sdk-mode/overview)**<br>Your app sends the speech; the avatar speaks it | [web](avatar-integration/sdk-mode/web) | [ios](avatar-integration/sdk-mode/ios) | [android](avatar-integration/sdk-mode/android) | — |
+| **[LiveKit](https://docs.spatialreal.ai/avatar-integration/livekit/overview)**<br>The avatar joins your LiveKit voice agent's room | [web-client](avatar-integration/livekit/web-client) | — | — | [agent](avatar-integration/livekit/agent) (Python) |
+| **[Host mode](https://docs.spatialreal.ai/avatar-integration/host-mode/overview)**<br>Your server forwards speech and motion to your app | [client/web](avatar-integration/host-mode/client/web) | [client/ios](avatar-integration/host-mode/client/ios) | [client/android](avatar-integration/host-mode/client/android) | [server](avatar-integration/host-mode/server) (Python) |
+
+LiveKit and Host mode each come in two halves: start the server side first, then a client.
 
 Not sure which one you need? [How it works](https://docs.spatialreal.ai/overview/how-it-works) explains the two products, and [Avatar Integration](https://docs.spatialreal.ai/avatar-integration/introduction) helps you choose a mode.
 
@@ -39,17 +53,24 @@ Not sure which one you need? [How it works](https://docs.spatialreal.ai/overview
 
 You need a [SpatialReal Studio](https://app.spatialreal.ai) account. Depending on the example, you also need:
 
-- an **App ID** and **API key** — [Apps & API keys](https://docs.spatialreal.ai/studio/api-keys)
-- an **avatar ID** — [Avatar library](https://docs.spatialreal.ai/studio/public-avatar)
-- an **agent** — [SpatialReal Agent](https://docs.spatialreal.ai/agent/introduction)
+- an **App ID** and **API key**: [Apps & API keys](https://docs.spatialreal.ai/studio/api-keys)
+- an **avatar ID**: [Avatar library](https://docs.spatialreal.ai/studio/public-avatar)
+- an **agent**: [SpatialReal Agent](https://docs.spatialreal.ai/agent/introduction)
 
 Each example lists exactly what it needs.
 
 ## How the examples are laid out
 
 - One folder, one runnable project. Nothing is shared between folders.
-- Each has a README, a `.env.example` for your values, and at most three commands to run it.
+- Each has a README with at most three commands to run it, and a place for your values: `.env.example`, or a config file in the mobile apps.
+- Each README links its docs page, and maps the code to the page's steps so you can read them side by side.
 - Web examples are Vite + Vue apps with a small Express server for tokens; they need Node.js 20.19 or later. Python examples use [uv](https://docs.astral.sh/uv/).
+
+## Community
+
+- Questions, feedback, or something you built: join us on [Discord](https://discord.gg/TfKman55T2).
+- Something wrong in an example: [open an issue](https://github.com/SpatialReal-ai/spatialreal-examples/issues).
+- News and releases: follow [SpatialReal on LinkedIn](https://www.linkedin.com/company/spatialreal).
 
 ## License
 
