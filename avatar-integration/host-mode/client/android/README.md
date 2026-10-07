@@ -43,6 +43,44 @@ Connect your device, choose it in Android Studio, and press **Run**. From a term
 
 The messages are the same as in the [web client](../web#messages).
 
+## How it works
+
+```mermaid
+sequenceDiagram
+    participant App as Your app<br/>(HostController.kt)
+    participant Server as Your server<br/>(server.py)
+    participant SR as SpatialReal
+
+    Note over App,SR: The app opens
+    App->>SR: createSession() in Host mode, with the App ID and a session token
+    SR-->>App: The avatar
+    App->>Server: Connect to the WebSocket, port 8765
+    Server->>SR: init() and start(): a SpatialReal session for this app
+    Note over App: Server: connected
+
+    Note over App,SR: Tap Start
+    Note over App: start(): playback is ready
+
+    Note over App,SR: Tap Speak
+    App->>Server: speak
+    Server->>App: The clip's audio, with end false
+    Server->>SR: send_audio(clip, end=True)
+    loop Every motion message
+        SR-->>Server: Motion
+        Server->>App: The same motion, unchanged
+    end
+    Server->>App: End of utterance, after the last motion
+    Note over App: The avatar speaks the clip, lips in sync
+
+    Note over App,SR: Tap Stop
+    Note over App: interrupt(): playback stops at once
+    App->>Server: interrupt
+    Server->>SR: interrupt()
+    Note over Server: Stops forwarding the old utterance
+```
+
+The app downloads the avatar from SpatialReal and opens no other connection to it. Everything else (the audio, the motion and the end of each utterance) reaches the app through your server, in order.
+
 ## How it maps to the docs
 
 | Docs step (Android tab) | Where it is |

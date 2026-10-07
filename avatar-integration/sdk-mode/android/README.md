@@ -37,6 +37,37 @@ Connect your device, choose it in Android Studio, and press **Run**. From a term
 3. Tap **Speak (female voice)** or **Speak (male voice)**, whichever suits your avatar. The avatar speaks the clip, lips in sync, and returns to idle when it ends.
 4. Tap **Stop** while it speaks: it stops at once. **End** closes the session and keeps the avatar on screen.
 
+## How it works
+
+```mermaid
+sequenceDiagram
+    participant App as Your app<br/>(AvatarController.kt)
+    participant SR as SpatialReal
+
+    Note over App,SR: The app opens
+    App->>SR: createSession(), with the App ID and the session token from Config
+    SR-->>App: The avatar
+    Note over App: The avatar stands still. Nothing is billed.
+
+    Note over App,SR: Tap Start
+    App->>SR: start()
+    Note over App: Live. Billing starts.
+
+    Note over App,SR: Tap Speak
+    App->>SR: send(clip, end = true)
+    SR-->>App: Motion
+    Note over App: The avatar speaks the clip, lips in sync
+
+    Note over App,SR: Tap Stop
+    Note over App: interrupt(): the avatar stops at once
+
+    Note over App,SR: Tap End
+    App->>SR: end()
+    Note over App: The session closes. The avatar stays on screen.
+```
+
+Here the session token comes from `Config.kt`. A real app fetches it from its own server, so the API key never ships inside the app.
+
 ## How it maps to the docs
 
 | Docs step | Where it is |
