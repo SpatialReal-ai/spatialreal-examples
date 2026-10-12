@@ -7,7 +7,7 @@
     "build": "vite build"
   },
   "dependencies": {
-    "@spatialreal/web-sdk": "^1.0.0-beta.1",
+    "@spatialreal/web-sdk": "^1.0.0-beta.2",
     "express": "^5.2.1",
     "livekit-client": "^2.22.3",
     "livekit-server-sdk": "^2.19.1",
