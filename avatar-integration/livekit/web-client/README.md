@@ -39,6 +39,8 @@ npm run dev
 
 Open http://localhost:5173.
 
+The [iOS](../ios-client) and [Android](../android-client) clients use this folder's token server too: `npm run server` starts it on its own, on port 3000.
+
 ## What you should see
 
 1. The avatar appears, standing still.
