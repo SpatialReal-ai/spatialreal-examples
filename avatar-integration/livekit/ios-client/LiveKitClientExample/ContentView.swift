@@ -12,11 +12,11 @@ struct ContentView: View {
 
             HStack {
                 Button("Start") { Task { await model.start() } }
-                    .disabled(model.state != .idle)
+                    .disabled(model.state != .idle || model.busy)
                 Button(model.muted ? "Unmute" : "Mute") { Task { await model.toggleMute() } }
-                    .disabled(model.state != .live)
+                    .disabled(model.state != .live || model.busy)
                 Button("Leave") { Task { await model.leave() } }
-                    .disabled(model.state != .live)
+                    .disabled(model.state != .live || model.busy)
             }
 
             Text("Session: \(model.state?.rawValue ?? "loading")")

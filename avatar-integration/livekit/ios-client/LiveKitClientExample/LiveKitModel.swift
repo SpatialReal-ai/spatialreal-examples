@@ -1,3 +1,4 @@
+import AVFoundation
 import SpatialRealLiveKit
 import SpatialRealSDK
 import SwiftUI
@@ -14,6 +15,11 @@ final class LiveKitModel: ObservableObject {
     @Published private(set) var muted = false
     @Published private(set) var message: String?
 
+    @Published private(set) var busy = false
+
+    private var needsNewRoom = false
+    private var removeStateListener: (@MainActor () -> Void)?
+    private var removeErrorListener: (@MainActor () -> Void)?
     private var session: LiveKitAvatarSession?
 
     /// Fetch the two tokens from your server, then create the session: the avatar is downloaded
@@ -30,8 +36,10 @@ final class LiveKitModel: ObservableObject {
                 livekit: LiveKitConnection(url: tokens.url, token: tokens.roomToken),
                 mic: .required                                                // start() turns the microphone on
             ))
-            _ = session.onState { [weak self] change in self?.state = change.current }
-            _ = session.onError { [weak self] error in self?.message = Self.describe(error) }
+            let removeState = session.onState { [weak self] change in self?.state = change.current }
+            removeStateListener = { removeState() }
+            let removeError = session.onError { [weak self] error in self?.message = Self.describe(error) }
+            removeErrorListener = { removeError() }
             state = session.state
             self.session = session
         } catch {
@@ -42,8 +50,27 @@ final class LiveKitModel: ObservableObject {
     /// start() joins the room and turns on the microphone. Your agent joins the new room
     /// and greets you; the avatar speaks its replies.
     func start() async {
+        guard !busy else { return }
+        busy = true
+        defer { busy = false }
         message = nil
         do {
+            let allowed = await AVCaptureDevice.requestAccess(for: .audio)
+            guard allowed else {
+                message = "Microphone access is required. Enable it in Settings > Privacy & Security > Microphone."
+                return
+            }
+            if needsNewRoom {
+                // The previous agent ends on Leave. A new room dispatches a new agent.
+                state = nil
+                await release()
+                await create()
+                guard session != nil else {
+                    state = .idle
+                    return
+                }
+                needsNewRoom = false
+            }
             try await session?.start()
         } catch {
             message = Self.describe(error)
@@ -63,6 +90,10 @@ final class LiveKitModel: ObservableObject {
 
     /// Leave the room. The avatar stays on screen; start() joins again.
     func leave() async {
+        guard !busy else { return }
+        busy = true
+        needsNewRoom = true
+        defer { busy = false }
         do {
             try await session?.end()
         } catch {
@@ -73,8 +104,13 @@ final class LiveKitModel: ObservableObject {
 
     /// The screen goes away: leave the room and release everything.
     func release() async {
-        await session?.dispose()
+        removeStateListener?()
+        removeErrorListener?()
+        removeStateListener = nil
+        removeErrorListener = nil
+        let previous = session
         session = nil
+        await previous?.dispose()
     }
 
     // MARK: - Your token server
@@ -90,7 +126,13 @@ final class LiveKitModel: ObservableObject {
         guard let base = URL(string: Config.tokenServerURL) else { throw TokenServerError.badURL }
         var request = URLRequest(url: base.appending(path: "api/tokens"))
         request.httpMethod = "POST"
-        let (data, response) = try await URLSession.shared.data(for: request)
+        let configuration = URLSessionConfiguration.default
+        // Keep the first request alive while the user answers the local-network prompt.
+        configuration.waitsForConnectivity = true
+        configuration.timeoutIntervalForResource = 60
+        let client = URLSession(configuration: configuration)
+        defer { client.finishTasksAndInvalidate() }
+        let (data, response) = try await client.data(for: request)
         guard let http = response as? HTTPURLResponse, http.statusCode == 200 else {
             throw TokenServerError.failed((response as? HTTPURLResponse)?.statusCode ?? 0)
         }

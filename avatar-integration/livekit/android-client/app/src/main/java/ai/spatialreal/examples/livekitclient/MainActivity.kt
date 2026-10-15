@@ -95,12 +95,12 @@ fun LiveKitScreen(controller: LiveKitController) {
                         micPermission.launch(Manifest.permission.RECORD_AUDIO)
                     }
                 },
-                enabled = controller.state == SessionState.IDLE,
+                enabled = controller.state == SessionState.IDLE && !controller.busy,
             ) { Text("Start") }
-            OutlinedButton(onClick = { scope.launch { controller.toggleMute() } }, enabled = live) {
+            OutlinedButton(onClick = { scope.launch { controller.toggleMute() } }, enabled = live && !controller.busy) {
                 Text(if (controller.muted) "Unmute" else "Mute")
             }
-            OutlinedButton(onClick = { scope.launch { controller.leave() } }, enabled = live) { Text("Leave") }
+            OutlinedButton(onClick = { scope.launch { controller.leave() } }, enabled = live && !controller.busy) { Text("Leave") }
         }
 
         Text("Session: ${controller.state?.name?.lowercase() ?: "loading"}", color = Color.Gray)

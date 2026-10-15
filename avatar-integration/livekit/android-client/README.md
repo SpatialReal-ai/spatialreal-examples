@@ -39,9 +39,9 @@ Connect your device, choose it in Android Studio, and press **Run**. From a term
 1. The avatar appears, standing still: the app fetched its two tokens and downloaded the avatar.
 2. Tap **Start** and allow the microphone. The app joins a new room; your agent joins it too and greets you — the avatar speaks it, lips in sync.
 3. Speak. Your agent hears you, and the avatar speaks its reply.
-4. **Mute** stops sending your microphone; **Leave** leaves the room and keeps the avatar on screen. **Start** joins again.
+4. **Mute** stops sending your microphone; **Leave** leaves the room and keeps the avatar on screen. **Start** fetches a new room and dispatches a fresh agent.
 
-Every launch gets its own room, so two devices don't talk over each other.
+Every launch and every Start after Leave gets its own room, so two devices don't talk over each other and reconnecting starts a fresh agent.
 
 ## How it works
 

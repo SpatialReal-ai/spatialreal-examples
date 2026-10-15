@@ -37,9 +37,9 @@ Choose your device, and press **Run** (⌘R).
 1. The avatar appears, standing still: the app fetched its two tokens and downloaded the avatar.
 2. Tap **Start** and allow the microphone. The app joins a new room; your agent joins it too and greets you — the avatar speaks it, lips in sync.
 3. Speak. Your agent hears you, and the avatar speaks its reply.
-4. **Mute** stops sending your microphone; **Leave** leaves the room and keeps the avatar on screen. **Start** joins again.
+4. **Mute** stops sending your microphone; **Leave** leaves the room and keeps the avatar on screen. **Start** fetches a new room and dispatches a fresh agent.
 
-Every launch gets its own room, so two devices don't talk over each other.
+Every launch and every Start after Leave gets its own room, so two devices don't talk over each other and reconnecting starts a fresh agent.
 
 ## How it works
 
@@ -76,4 +76,6 @@ sequenceDiagram
 
 The app downloads the avatar from SpatialReal and opens no other connection to it. The avatar's speech and motion reach the app through the room, and the SDK plays them itself: don't play the avatar's audio track through `session.room` yourself, and leave the room with `end()` or `dispose()` rather than disconnecting `session.room`.
 
-`NSMicrophoneUsageDescription` is set in the target's build settings; a `.required` microphone that the user refuses makes `start()` fail with `mic-denied`.
+`NSMicrophoneUsageDescription` is set in the target's build settings. The app explicitly requests microphone access before Start and displays a Settings hint if access is denied. LiveKit manages microphone capture and the audio session using its default backend.
+
+Test speech directly on the physical device with Device Hub screen sharing closed. [Device Hub can block microphone access and cause silent recordings](https://developer.apple.com/documentation/xcode/interacting-with-your-app-in-device-hub#Handle-camera-and-microphone-access-conflicts-on-physical-devices), even when permission is granted and the microphone track is published.

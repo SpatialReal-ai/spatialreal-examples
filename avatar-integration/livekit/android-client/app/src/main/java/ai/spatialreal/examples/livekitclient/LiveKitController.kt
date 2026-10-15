@@ -38,7 +38,13 @@ class LiveKitController(private val context: Context) {
     var message by mutableStateOf<String?>(null)
         private set
 
+    var busy by mutableStateOf(false)
+        private set
+
     private var session: LiveKitAvatarSession? = null
+    private var needsNewRoom = false
+    private var removeStateListener: (() -> Unit)? = null
+    private var removeErrorListener: (() -> Unit)? = null
 
     /**
      * Fetch the two tokens from your server, then create the session: the avatar is downloaded
@@ -58,8 +64,8 @@ class LiveKitController(private val context: Context) {
                     mic = MicPolicy.REQUIRED,                                    // start() turns the microphone on
                 )
             )
-            session.onState { change -> state = change.current }
-            session.onError { error -> message = describe(error) }
+            removeStateListener = session.onState { change -> state = change.current }
+            removeErrorListener = session.onError { error -> message = describe(error) }
             state = session.state
             this.session = session
         } catch (error: SpatialRealError) {
@@ -74,11 +80,26 @@ class LiveKitController(private val context: Context) {
      * Your agent joins the new room and greets you; the avatar speaks its replies.
      */
     suspend fun start() {
+        if (busy) return
+        busy = true
         message = null
         try {
+            if (needsNewRoom) {
+                // The previous agent ends on Leave. A new room dispatches a new agent.
+                state = null
+                release()
+                create()
+                if (session == null) {
+                    state = SessionState.IDLE
+                    return
+                }
+                needsNewRoom = false
+            }
             session?.start()
         } catch (error: SpatialRealError) {
             message = describe(error)
+        } finally {
+            busy = false
         }
     }
 
@@ -100,18 +121,28 @@ class LiveKitController(private val context: Context) {
 
     /** Leave the room. The avatar stays on screen; start() joins again. */
     suspend fun leave() {
+        if (busy) return
+        busy = true
+        needsNewRoom = true
         try {
             session?.end()
         } catch (error: SpatialRealError) {
             message = describe(error)
+        } finally {
+            muted = false
+            busy = false
         }
-        muted = false
     }
 
     /** The screen goes away: leave the room and release everything. */
     suspend fun release() {
-        session?.dispose()
+        removeStateListener?.invoke()
+        removeErrorListener?.invoke()
+        removeStateListener = null
+        removeErrorListener = null
+        val previous = session
         session = null
+        previous?.dispose()
     }
 
     // ---- Your token server ----
