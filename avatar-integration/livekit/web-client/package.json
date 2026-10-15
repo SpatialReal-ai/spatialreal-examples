@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "concurrently -k -n server,web \"node --env-file=.env --watch server.js\" \"vite\"",
+    "server": "node --env-file=.env --watch server.js",
     "build": "vite build"
   },
   "dependencies": {

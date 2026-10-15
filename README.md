@@ -42,7 +42,7 @@ An avatar for speech you already produce: your TTS, speech model or voice agent.
 | | Web | iOS | Android | Server |
 | --- | --- | --- | --- | --- |
 | **[SDK mode](https://docs.spatialreal.ai/avatar-integration/sdk-mode/overview)**<br>Your app sends the speech; the avatar speaks it | [web](avatar-integration/sdk-mode/web) | [ios](avatar-integration/sdk-mode/ios) | [android](avatar-integration/sdk-mode/android) | — |
-| **[LiveKit](https://docs.spatialreal.ai/avatar-integration/livekit/overview)**<br>The avatar joins your LiveKit voice agent's room | [web-client](avatar-integration/livekit/web-client) | — | — | [agent](avatar-integration/livekit/agent) (Python) |
+| **[LiveKit](https://docs.spatialreal.ai/avatar-integration/livekit/overview)**<br>The avatar joins your LiveKit voice agent's room | [web-client](avatar-integration/livekit/web-client) | [ios-client](avatar-integration/livekit/ios-client) | [android-client](avatar-integration/livekit/android-client) | [agent](avatar-integration/livekit/agent) (Python) |
 | **[Host mode](https://docs.spatialreal.ai/avatar-integration/host-mode/overview)**<br>Your server forwards speech and motion to your app | [client/web](avatar-integration/host-mode/client/web) | [client/ios](avatar-integration/host-mode/client/ios) | [client/android](avatar-integration/host-mode/client/android) | [server](avatar-integration/host-mode/server) (Python) |
 
 LiveKit and Host mode each come in two halves: start the server side first, then a client.
