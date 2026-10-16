@@ -33,7 +33,7 @@ Connect your device, choose it in Android Studio, and press **Run**. From a term
 
 ## What you should see
 
-1. The agent's avatar appears, standing still. Nothing is billed yet.
+1. The agent's avatar appears, standing still, in front of the background its owner set in Studio (if any). Nothing is billed yet.
 2. Tap **Start** and allow the microphone. The session goes `live`, and billing starts.
 3. Say something. The agent answers in its voice, lips in sync, and the captions show both sides of the conversation.
 4. Tap **End** to finish. **Start** opens a new conversation.
