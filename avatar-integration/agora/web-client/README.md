@@ -121,4 +121,5 @@ The microphone follows the SDK's `mic` option: `'required'` (this page) fails `s
 - **The agent never answers**: a TEN agent listens only to the `user_uid` it was started with; it must equal `USER_UID`.
 - **`start()` fails with `connection-failed`**: the token doesn't match the channel or uid, or the browser can't decode H.264.
 - **A capability or profile error** (in the agent's log, or from the page before any speech plays): the agent's SDK, SpatialReal's backend and this page's SDK don't agree on the playback mode. Use `spatialreal` 0.4.0 or later on the agent side and `@spatialreal/web-sdk` 1.0.0-beta.7 or later here, or switch the agent to compatibility mode (`source_timeline_only: false`).
+- **`connection-failed: Could not query the browser's codecs`** in your own Vite app, on the dev server only: `agora-rtc-sdk-ng` is CommonJS and must be pre-bundled. Add `optimizeDeps: { include: ['agora-rtc-sdk-ng'] }` to `vite.config.ts`, as this folder does.
 - **`credential-invalid`**: `SPATIALREAL_APP_ID` doesn't belong to the API key that issued the session token.
