@@ -14,6 +14,7 @@ Runnable examples for [SpatialReal](https://www.spatialreal.ai): photorealistic 
 [![Android SDK on Maven Central](https://img.shields.io/badge/Android%20SDK-Maven%20Central-3DDC84?logo=android&logoColor=white)](https://central.sonatype.com/artifact/ai.spatialreal/android)
 [![Python SDK on PyPI](https://img.shields.io/badge/Python%20SDK-PyPI-3775A9?logo=pypi&logoColor=white)](https://pypi.org/project/spatialreal/)
 [![LiveKit plugin on PyPI](https://img.shields.io/badge/LiveKit%20plugin-PyPI-3775A9?logo=pypi&logoColor=white)](https://pypi.org/project/livekit-plugins-spatialreal/)
+[![Pipecat plugin on PyPI](https://img.shields.io/badge/Pipecat%20plugin-PyPI-3775A9?logo=pypi&logoColor=white)](https://pypi.org/project/pipecat-spatialreal/)
 
 </div>
 
@@ -43,9 +44,10 @@ An avatar for speech you already produce: your TTS, speech model or voice agent.
 | --- | --- | --- | --- | --- |
 | **[SDK mode](https://docs.spatialreal.ai/avatar-integration/sdk-mode/overview)**<br>Your app sends the speech; the avatar speaks it | [web](avatar-integration/sdk-mode/web) | [ios](avatar-integration/sdk-mode/ios) | [android](avatar-integration/sdk-mode/android) | — |
 | **[LiveKit](https://docs.spatialreal.ai/avatar-integration/livekit/overview)**<br>The avatar joins your LiveKit voice agent's room | [web-client](avatar-integration/livekit/web-client) | [ios-client](avatar-integration/livekit/ios-client) | [android-client](avatar-integration/livekit/android-client) | [agent](avatar-integration/livekit/agent) (Python) |
+| **[Pipecat](https://docs.spatialreal.ai/avatar-integration/pipecat/overview)**<br>Your Pipecat voice bot drives the avatar in the browser | [web-client](avatar-integration/pipecat/web-client) | — | — | [bot](avatar-integration/pipecat/bot) (Python) |
 | **[Host mode](https://docs.spatialreal.ai/avatar-integration/host-mode/overview)**<br>Your server forwards speech and motion to your app | [client/web](avatar-integration/host-mode/client/web) | [client/ios](avatar-integration/host-mode/client/ios) | [client/android](avatar-integration/host-mode/client/android) | [server](avatar-integration/host-mode/server) (Python) |
 
-LiveKit and Host mode each come in two halves: start the server side first, then a client.
+LiveKit, Pipecat and Host mode each come in two halves: start the server side first, then a client.
 
 Not sure which one you need? [How it works](https://docs.spatialreal.ai/overview/how-it-works) explains the two products, and [Avatar Integration](https://docs.spatialreal.ai/avatar-integration/introduction) helps you choose a mode.
 
