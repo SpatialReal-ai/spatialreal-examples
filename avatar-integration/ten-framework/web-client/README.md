@@ -1,10 +1,10 @@
-# Agora web client
+# TEN Framework web client
 
 A web page that joins your Agora channel, sends the user's microphone to your agent, and renders the avatar that speaks the agent's replies.
 
-Docs: [Agora web client](https://docs.spatialreal.ai/avatar-integration/agora/web-client)
+Docs: [TEN Framework web client](https://docs.spatialreal.ai/avatar-integration/ten-framework/web-client)
 
-This is one half of the Agora example. Start an agent that publishes a SpatialReal avatar into the same channel: the TEN voice agent in [`../ten-agent`](../ten-agent), or your own server with the Python SDK ([Without TEN](../ten-agent#without-ten-python-sdk)).
+This is one half of the TEN Framework example. Start an agent that publishes a SpatialReal avatar into the same channel: the TEN voice agent in [`../agent`](../agent), or your own server with the Python SDK ([Without TEN](../agent#without-ten-python-sdk)).
 
 ## What the page shows
 
@@ -13,7 +13,7 @@ In an Agora channel, SpatialReal joins as its own uid (the **avatar uid**) and p
 ## Before you start
 
 - Node.js 20.19 or later
-- An agent publishing the avatar into the channel: [`../ten-agent`](../ten-agent), or the Python SDK
+- An agent publishing the avatar into the channel: [`../agent`](../agent), or the Python SDK
 - An [Agora](https://console.agora.io) project: its App ID and App Certificate, the same project your agent uses
 - From [SpatialReal Studio](https://app.spatialreal.ai): your **App ID** and **API key** ([Apps & API keys](https://docs.spatialreal.ai/studio/api-keys)), and the same **avatar ID** your agent uses
 - A microphone
@@ -59,8 +59,8 @@ Open http://localhost:5173.
 
 The page and the agent meet in one channel. Whatever publishes the avatar must use the same Agora project, `AGORA_CHANNEL` and `AVATAR_UID`, and the same SpatialReal avatar.
 
-- **TEN voice agent**: follow [`../ten-agent`](../ten-agent). Start the agent with `channel_name` set to your `AGORA_CHANNEL` and `user_uid` set to your `USER_UID`, then click **Start** here.
-- **Python SDK**: create a session with `AgoraEgressConfig(channel_name=AGORA_CHANNEL, token=…, uid=AVATAR_UID)` and send it your speech; see [Without TEN](../ten-agent#without-ten-python-sdk). The snippet there needs no microphone: it plays an audio file into the channel.
+- **TEN voice agent**: follow [`../agent`](../agent). Start the agent with `channel_name` set to your `AGORA_CHANNEL` and `user_uid` set to your `USER_UID`, then click **Start** here.
+- **Python SDK**: create a session with `AgoraEgressConfig(channel_name=AGORA_CHANNEL, token=…, uid=AVATAR_UID)` and send it your speech; see [Without TEN](../agent#without-ten-python-sdk). The snippet there needs no microphone: it plays an audio file into the channel.
 
 The order doesn't matter: the page renders the avatar from whenever both are in the channel.
 

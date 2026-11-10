@@ -104,7 +104,7 @@ function describe(e: unknown): string {
 
 <template>
   <main>
-    <h1>Agora web client</h1>
+    <h1>TEN Framework web client</h1>
     <div ref="container" class="avatar"></div>
 
     <div class="controls">

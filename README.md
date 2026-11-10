@@ -43,10 +43,10 @@ An avatar for speech you already produce: your TTS, speech model or voice agent.
 | --- | --- | --- | --- | --- |
 | **[SDK mode](https://docs.spatialreal.ai/avatar-integration/sdk-mode/overview)**<br>Your app sends the speech; the avatar speaks it | [web](avatar-integration/sdk-mode/web) | [ios](avatar-integration/sdk-mode/ios) | [android](avatar-integration/sdk-mode/android) | — |
 | **[LiveKit](https://docs.spatialreal.ai/avatar-integration/livekit/overview)**<br>The avatar joins your LiveKit voice agent's room | [web-client](avatar-integration/livekit/web-client) | [ios-client](avatar-integration/livekit/ios-client) | [android-client](avatar-integration/livekit/android-client) | [agent](avatar-integration/livekit/agent) (Python) |
-| **[Agora](https://docs.spatialreal.ai/avatar-integration/agora/overview)**<br>The avatar joins your voice agent's Agora channel | [web-client](avatar-integration/agora/web-client) | — | — | [ten-agent](avatar-integration/agora/ten-agent) (TEN, or the Python SDK) |
+| **[TEN Framework](https://docs.spatialreal.ai/avatar-integration/ten-framework/overview)**<br>The avatar joins your TEN voice agent's Agora channel | [web-client](avatar-integration/ten-framework/web-client) | — | — | [agent](avatar-integration/ten-framework/agent) (TEN, or the Python SDK) |
 | **[Host mode](https://docs.spatialreal.ai/avatar-integration/host-mode/overview)**<br>Your server forwards speech and motion to your app | [client/web](avatar-integration/host-mode/client/web) | [client/ios](avatar-integration/host-mode/client/ios) | [client/android](avatar-integration/host-mode/client/android) | [server](avatar-integration/host-mode/server) (Python) |
 
-LiveKit, Agora and Host mode each come in two halves: start the server side first, then a client.
+LiveKit, TEN Framework and Host mode each come in two halves: start the server side first, then a client.
 
 Not sure which one you need? [How it works](https://docs.spatialreal.ai/overview/how-it-works) explains the two products, and [Avatar Integration](https://docs.spatialreal.ai/avatar-integration/introduction) helps you choose a mode.
 

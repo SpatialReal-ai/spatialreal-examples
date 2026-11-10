@@ -1,10 +1,10 @@
-# TEN agent
+# TEN Framework agent
 
 A [TEN Framework](https://github.com/TEN-framework/ten-framework) voice agent with the SpatialReal avatar extension, `spatialreal_avatar_python`: whatever the agent says, the avatar speaks in your Agora channel, with lip-sync and expressions.
 
-Docs: [TEN agent](https://docs.spatialreal.ai/avatar-integration/agora/ten-agent)
+Docs: [TEN Framework agent](https://docs.spatialreal.ai/avatar-integration/ten-framework/agent)
 
-This is one half of the Agora example. The other half, the page users talk from, is in [`../web-client`](../web-client). Without TEN, the [Python SDK](#without-ten-python-sdk) publishes the avatar the same way.
+This is one half of the TEN Framework example. The other half, the page users talk from, is in [`../web-client`](../web-client). Without TEN, the [Python SDK](#without-ten-python-sdk) publishes the avatar the same way.
 
 ## How the avatar reaches the channel
 
