@@ -1,0 +1,25 @@
+{
+  "name": "spatialreal-pipecat-web-client",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -k -n server,web \"node --env-file=.env --watch server.js\" \"vite\"",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "@pipecat-ai/client-js": "^1.16.0",
+    "@pipecat-ai/daily-transport": "^1.7.2",
+    "@pipecat-ai/livekit-transport": "^1.1.2",
+    "@spatialreal/web-sdk": "^1.0.0-beta.6",
+    "express": "^5.2.1",
+    "vue": "^3.5.43"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.9",
+    "concurrently": "^10.0.5",
+    "vite": "^8.3.1"
+  },
+  "engines": {
+    "node": ">=20.19"
+  }
+}

@@ -1,0 +1,10 @@
+[project]
+name = "spatialreal-pipecat-bot"
+version = "0.1.0"
+description = "A Pipecat voice bot with a SpatialReal avatar"
+requires-python = ">=3.11"
+dependencies = [
+    "pipecat-ai[daily,livekit,runner,silero,deepgram,cartesia,google]>=1.15,<2",
+    "pipecat-spatialreal>=0.1.1",
+    "python-dotenv>=1.2.3",
+]
