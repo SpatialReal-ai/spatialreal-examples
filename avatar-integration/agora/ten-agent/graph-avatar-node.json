@@ -1,0 +1,45 @@
+{
+  "nodes": [
+    {
+      "type": "extension",
+      "name": "avatar",
+      "addon": "spatialreal_avatar_python",
+      "extension_group": "default",
+      "property": {
+        "channel": "",
+        "params": {
+          "spatialreal_api_key": "${env:SPATIALREAL_API_KEY|}",
+          "spatialreal_avatar_id": "${env:SPATIALREAL_AVATAR_ID|}",
+          "spatialreal_app_id": "${env:SPATIALREAL_APP_ID|}",
+          "environment": "us-west",
+          "console_endpoint_url": "",
+          "ingress_endpoint_url": "",
+          "sample_rate": 24000,
+          "egress_idle_reconnect_ms": 1080000,
+          "agora_uid": "1001",
+          "agora_token": "",
+          "agora_appid": "${env:AGORA_APP_ID|}",
+          "agora_appcert": "${env:AGORA_APP_CERTIFICATE|}",
+          "agora_channel": ""
+        }
+      }
+    }
+  ],
+  "connections": [
+    {
+      "extension": "main_control",
+      "cmd": [
+        { "name": "flush", "dest": [{ "extension": "avatar" }] }
+      ]
+    },
+    {
+      "extension": "tts",
+      "audio_frame": [
+        { "name": "pcm_frame", "dest": [{ "extension": "avatar" }] }
+      ],
+      "data": [
+        { "name": "tts_audio_end", "dest": [{ "extension": "avatar" }] }
+      ]
+    }
+  ]
+}
