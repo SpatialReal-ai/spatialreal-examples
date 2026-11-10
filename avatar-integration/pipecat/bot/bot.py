@@ -51,7 +51,9 @@ async def bot(runner_args: RunnerArguments):
     )
     tts = CartesiaTTSService(
         api_key=os.environ["CARTESIA_API_KEY"],
-        settings=CartesiaTTSService.Settings(voice="71a7ad14-091c-4e8e-a314-022ece01c121"),
+        settings=CartesiaTTSService.Settings(
+            voice="71a7ad14-091c-4e8e-a314-022ece01c121"
+        ),
     )
 
     # The avatar: right after the TTS, before the transport's output
@@ -86,7 +88,10 @@ async def bot(runner_args: RunnerArguments):
     @worker.rtvi.event_handler("on_client_ready")
     async def on_client_ready(rtvi):
         context.add_message(
-            {"role": "developer", "content": "Say hello and briefly introduce yourself."}
+            {
+                "role": "developer",
+                "content": "Say hello and briefly introduce yourself.",
+            }
         )
         await worker.queue_frames([LLMRunFrame()])
 
