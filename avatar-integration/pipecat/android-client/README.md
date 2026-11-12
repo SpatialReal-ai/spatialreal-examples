@@ -27,7 +27,7 @@ Fill in `app/src/main/java/ai/spatialreal/examples/pipecatclient/Config.kt`:
 
 From the Android emulator, `10.0.2.2` reaches the computer it runs on: `http://10.0.2.2:7860` and `http://10.0.2.2:3000`.
 
-The SDK is `ai.spatialreal:android-pipecat`, which brings `ai.spatialreal:android` and Pipecat's Daily transport with it. `settings.gradle.kts` adds SpatialReal's Maven repository after Maven Central, which serves 1.0.0-beta8 until it is also on Maven Central.
+The SDK is `ai.spatialreal:android-pipecat`, which brings `ai.spatialreal:android` and Pipecat's Daily transport with it. `settings.gradle.kts` adds SpatialReal's Maven repository after Maven Central, which serves 1.0.0-beta9 until it is also on Maven Central.
 
 ## Run
 

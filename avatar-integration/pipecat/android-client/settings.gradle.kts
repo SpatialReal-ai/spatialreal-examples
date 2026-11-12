@@ -16,7 +16,7 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        // SpatialReal's Maven repository serves 1.0.0-beta8 until it is also on Maven Central
+        // SpatialReal's Maven repository serves 1.0.0-beta9 until it is also on Maven Central
         maven("https://maven.spatialreal.cloud")
     }
 }

@@ -42,8 +42,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/SpatialReal-ai/ios-sdk-release.git",
       "state" : {
-        "revision" : "0f03ef85390584a24b2a38c7193da3e751d343fc",
-        "version" : "1.0.0-beta.8"
+        "revision" : "2c020909abdbf18bbaf1057be0b172ae4f671628",
+        "version" : "1.0.0-beta.9"
       }
     },
     {

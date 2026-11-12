@@ -70,8 +70,7 @@ final class PipecatModel: ObservableObject {
             guard let runner = URL(string: Config.botServerURL)?.appending(path: "start") else {
                 throw ConfigError.badURL("Config.botServerURL")
             }
-            // A new client for every conversation, on the same transport: it sets up the call's
-            // devices again, which Pipecat's client only does once per client
+            // A new client for every conversation, on the same transport
             let client = PipecatClient(options: PipecatClientOptions(transport: transport, enableMic: true))
             client.delegate = self
             self.client = client

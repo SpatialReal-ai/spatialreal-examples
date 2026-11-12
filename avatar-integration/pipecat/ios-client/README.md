@@ -75,7 +75,7 @@ sequenceDiagram
 
 A phone app on Daily cannot tap the bot's audio track, so the avatar session asks the bot's processor to send each reply's audio along with the animation, and plays it itself. Until the first pause in the bot's speech, Daily plays the bot's track as usual; then the session switches that track off and the avatar takes over. Leave the bot's audio track to the session: don't mute it, unsubscribe it or play it yourself.
 
-Every conversation gets a new `PipecatClient` on the same `DailyTransport`: the avatar session is bound to the transport it was created with, and a new client sets up the call's devices again. Leave ends the avatar session before disconnecting the client, while the call can still switch the bot's audio track back on.
+Every conversation gets a new `PipecatClient` on the same `DailyTransport`, which the avatar session was created with. Leave ends the avatar session before disconnecting the client, while the call can still switch the bot's audio track back on.
 
 `NSMicrophoneUsageDescription` and `NSLocalNetworkUsageDescription` are set in the target's build settings, and `Info.plist` allows plain `http://` on your local network. A production app talks to its server over `https://` and needs neither.
 
