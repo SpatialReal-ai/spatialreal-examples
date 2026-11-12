@@ -5,6 +5,6 @@ description = "A Pipecat voice bot with a SpatialReal avatar"
 requires-python = ">=3.11"
 dependencies = [
     "pipecat-ai[daily,livekit,runner,silero,deepgram,cartesia,google]>=1.15,<2",
-    "pipecat-spatialreal>=0.1.1",
+    "pipecat-spatialreal>=0.2.0",  # 0.2.0: mobile apps
     "python-dotenv>=1.2.3",
 ]

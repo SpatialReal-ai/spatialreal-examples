@@ -4,7 +4,7 @@ A [Pipecat](https://github.com/pipecat-ai/pipecat) voice bot in Python with the 
 
 Docs: [Pipecat bot](https://docs.spatialreal.ai/avatar-integration/pipecat/bot)
 
-This is one half of the Pipecat example. The other half, the page users talk from, is in [`../web-client`](../web-client).
+This is one half of the Pipecat example. The other half is what users talk from: the page in [`../web-client`](../web-client), or the [iOS](../ios-client) or [Android](../android-client) app.
 
 ## Before you start
 
