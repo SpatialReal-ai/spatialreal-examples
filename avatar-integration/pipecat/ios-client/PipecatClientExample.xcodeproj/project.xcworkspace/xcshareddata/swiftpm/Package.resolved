@@ -1,0 +1,96 @@
+{
+  "originHash" : "3fa4f8512cfeeeb30a48c0021aea2264da20388d7d04399ddb33d7138b8ccefb",
+  "pins" : [
+    {
+      "identity" : "agorainfra_ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/AgoraIO/AgoraInfra_iOS.git",
+      "state" : {
+        "revision" : "0c21b485af8e64b2716632f2f7badab8705343b1",
+        "version" : "1.3.5"
+      }
+    },
+    {
+      "identity" : "agorartcengine_ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/AgoraIO/AgoraRtcEngine_iOS.git",
+      "state" : {
+        "revision" : "00b614b1ff1135565e45e9e4bf7d4ec33da7b67f",
+        "version" : "4.6.4"
+      }
+    },
+    {
+      "identity" : "client-sdk-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/livekit/client-sdk-swift.git",
+      "state" : {
+        "revision" : "43ade336353ad12f9ec7fa1e6a51d9b3bd8121f8",
+        "version" : "2.15.3"
+      }
+    },
+    {
+      "identity" : "daily-client-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/daily-co/daily-client-ios.git",
+      "state" : {
+        "revision" : "c164ac9b26d173e8c032e528a5d4cfff05893666",
+        "version" : "0.41.0"
+      }
+    },
+    {
+      "identity" : "ios-sdk-release",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SpatialReal-ai/ios-sdk-release.git",
+      "state" : {
+        "revision" : "2c020909abdbf18bbaf1057be0b172ae4f671628",
+        "version" : "1.0.0-beta.9"
+      }
+    },
+    {
+      "identity" : "livekit-uniffi-xcframework",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/livekit/livekit-uniffi-xcframework.git",
+      "state" : {
+        "revision" : "7c161254ce7cd55debc48023f69a917076b12a26",
+        "version" : "0.0.6"
+      }
+    },
+    {
+      "identity" : "pipecat-client-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pipecat-ai/pipecat-client-ios.git",
+      "state" : {
+        "revision" : "ebf07b85ed99bfec27ae579c5b56430ec88eafdf",
+        "version" : "1.3.0"
+      }
+    },
+    {
+      "identity" : "pipecat-client-ios-daily",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pipecat-ai/pipecat-client-ios-daily.git",
+      "state" : {
+        "revision" : "2c7e362568e574e04ca6f5e7224e523dfd10c4f4",
+        "version" : "1.3.0"
+      }
+    },
+    {
+      "identity" : "swift-protobuf",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-protobuf.git",
+      "state" : {
+        "revision" : "c7d117246c8cd5f93daa873a68659cfe23c93a1e",
+        "version" : "1.40.0"
+      }
+    },
+    {
+      "identity" : "webrtc-xcframework",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/livekit/webrtc-xcframework.git",
+      "state" : {
+        "revision" : "46f2af86f06b9a8a9158d37cadda5cb5a214e4c4",
+        "version" : "144.7559.11"
+      }
+    }
+  ],
+  "version" : 3
+}
